@@ -1,0 +1,31 @@
+{% extends 'songs/base.html' %}
+
+{% block title %}
+    Stab Rabbits - Current Playlist
+{% endblock %}
+
+{% block content %}
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-10">
+            {% if songs %}
+                 <div>
+                    <h1>Current Playlist</h1>
+                    <br />
+                    <h4>{{ songs.count }} Songs</h4>
+                </div>
+            {% else %}
+                           <h1>Current Playlist</h1>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-10">
+            <div class="list-group">
+                {% for song in songs %}
+                     <a href="{% url 'viewsong' song.id %}" class="list-group-item list-group-item-primary{% if todo.currentplaylist %} list-group-item-primary{% endif %}"><b>{{ song.title }}</b>
+                    {% if song.artist %} - {{ song.artist|truncatechars:30 }}{% endif %}</a>
+                {% endfor %}
+            </div> 
+{% endblock %}
+

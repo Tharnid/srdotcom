@@ -1,5 +1,5 @@
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from todo import views
 
 urlpatterns = [
@@ -12,11 +12,13 @@ urlpatterns = [
     path('logout/', views.logoutuser, name='logoutuser'),
     
     # Blog
+    path('',include('blog.urls')),
     
-    # Songs
+    # Songs 
+    path('songs/', include('songs.urls')),    
     
     # Todo
-    path('', views.home, name='home'),
+    # path('', views.home, name='home'),
     path('create/', views.createtodo, name='createtodo'),
     path('current/', views.currenttodos, name='currenttodos'),
     path('completed/', views.completedtodos, name='completedtodos'),

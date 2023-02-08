@@ -8,6 +8,7 @@ class Todo(models.Model):
     datecompleted = models.DateTimeField(null=True, blank=True) # null is blank for DateTimeField
     modified = models.DateTimeField(auto_now=True)
     important = models.BooleanField(default=False)
+    onhold = models.BooleanField(default=False)
     user =  models.ForeignKey(User, on_delete=models.CASCADE) # foreign key/relationship
     
     # display the todos better in admin
